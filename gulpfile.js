@@ -29,12 +29,12 @@ gulp.task('styles',function() {
   .pipe(gulp.dest('public_html/css/fonts'))
 
 
-  // // Compiles CSS
-  // gulp.src('src/css/style.styl')
-  //   .pipe(stylus())
-  //   .pipe(autoprefixer())
-  //   .pipe(gulp.dest('./public_html/css/'))
-  //   .pipe(reload({stream:true}))
+  // Compiles CSS
+  gulp.src('src/css/style.styl')
+    .pipe(stylus())
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./public_html/css/'))
+    .pipe(reload({stream:true}))
 
   // concat skeleton css -- Must be after comilig css
   gulp.src('src/css/**.css')
