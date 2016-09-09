@@ -28,17 +28,10 @@ let App = React.createClass({
 		}
 	},
 	render : function(){
-		var data = this.state
-		var developerKeys = Object.keys(this.state)
-		var items = []
-
-		for( var i = 0; i <= developerKeys.length; i++){
-			items.push(this.state[developerKeys[i]])	
-		}
 		return(
 			<div className = 'app-cmp'>
 				<Form />
-				<List items = {items} />
+				<List items = {this.state} />
 			</div>
 		)
 	},
@@ -66,27 +59,33 @@ let Form = React.createClass({
 // List_cmp
 
 let List = React.createClass({
+	renderItem: function(key){
+		return <Item item={this.props.items[key]} key = {key}/>
+	},
 	render : function(){
 		return(
 		<div className='list-cmp'>
 			<ul>
-			 {/*this.props.items*/}
+			 	{
+					Object.keys(this.props.items).map(this.renderItem)
+				}
 			</ul>
 		</div>
 		)
-	} 
-}) 
+	}
+})
 
 // Item_cmp
 
 let Item = React.createClass({
 	render : function(){
+		var item = this.props.item
 		return(
-			<li>
-				<span> Name lastName </span> 
+			<li >
+				<span> {item.name} </span>
 				<span>Description</span>
 				Image
-			</li>			
+			</li>
 		)
 	}
 })
